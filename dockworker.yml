@@ -1,0 +1,22 @@
+dockworker:
+  version: '3.0'
+  application:
+    name: dspace.postgres.lib.unb.ca
+    finish_marker: 'database system is ready to accept connections'
+    project_prefix: DSPACE
+    upstream_images:
+      - postgres:12
+  deployment:
+    environments:
+      - dev
+      - prod
+  github:
+    repo: dspace.postgres.lib.unb.ca
+    owner: unb-libraries
+  image:
+    push_branches:
+      - dev
+      - prod
+    name: unblibraries/dspace.postgres.lib.unb.ca
+    date_tag_image: true
+    repository: dockercloud

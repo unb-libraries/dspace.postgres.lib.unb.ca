@@ -1,0 +1,12 @@
+version: '3.6'
+
+services:
+  dspace.postgres.lib.unb.ca:
+    build:
+      context: .
+    env_file:
+      - env/postgres.env
+    restart: always
+    container_name: dspace.postgres.lib.unb.ca
+    expose:
+      - "5432"
