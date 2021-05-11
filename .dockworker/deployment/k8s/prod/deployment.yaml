@@ -6,16 +6,16 @@ metadata:
     appMajor: "12"
     instance: dspace.postgres.lib.unb.ca
     tier: database
-    uri: dev-dspace.postgres.lib.unb.ca
+    uri: dspace.postgres.lib.unb.ca
     vcsOwner: unb-libraries
     vcsRepository: dspace.postgres.lib.unb.ca
-    vcsRef: dev
+    vcsRef: prod
   name: dspace-postgres-lib-unb-ca
-  namespace: dev
+  namespace: prod
 spec:
   selector:
     matchLabels:
-      uri: dev-dspace.postgres.lib.unb.ca
+      uri: dspace.postgres.lib.unb.ca
   replicas: 1
   revisionHistoryLimit: 0
   strategy:
@@ -27,13 +27,13 @@ spec:
         appMajor: "12"
         instance: dspace.postgres.lib.unb.ca
         tier: database
-        uri: dev-dspace.postgres.lib.unb.ca
+        uri: dspace.postgres.lib.unb.ca
         vcsOwner: unb-libraries
         vcsRepository: dspace.postgres.lib.unb.ca
-        vcsRef: dev
+        vcsRef: prod
     spec:
       nodeSelector:
-        deployenv: dev
+        deployenv: prod
       containers:
         -
           env:
@@ -54,10 +54,10 @@ spec:
             -
               mountPath: /var/lib/postgresql/data
               name: postgres-persistent-storage
-      priorityClassName: dev-high-priority-services
+      priorityClassName: vip-essential
       imagePullSecrets:
         -
-          name: docker-hub-auth
+          name: github-container-registry-auth
       restartPolicy: Always
       volumes:
         -
